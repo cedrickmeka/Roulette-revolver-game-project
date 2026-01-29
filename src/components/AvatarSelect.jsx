@@ -1,6 +1,9 @@
-/**
- * AvatarSelect.jsx
- * ----------------
- * Allows players to select Player 1 or Player 2
- * before the game starts.
- */
+export default function AvatarPicker({ goNext }) {
+  return (
+    <div>
+      <h2>Pick Your Player</h2>
+
+      <button onClick={goNext}>Done</button>
+    </div>
+  );
+}
