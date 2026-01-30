@@ -1,6 +1,11 @@
-button:hover {
+.button:hover {
 	color: white;
 	cursor: pointer;
 	filter: blur(1px);
 	font-size: 16px;
+}
+
+.winnerButton:hover {
+	background-color: rgba(145, 255, 0, 0.9);
+	cursor: pointer;
 }

@@ -14,13 +14,13 @@ function DeathScreen() {
 
 			<div className="flex justify-center align-middle gap-4 mt-7 mb-0">
 				<button
-					className="border-2 bg-yellow-500 p-2 rounded-2xl w-20 text-white cursor-pointer"
+					className={`${styles.button} border-2 bg-yellow-500 p-2 rounded-2xl w-20 text-white cursor-pointer`}
 					onClick={"#"}
 				>
 					Retry
 				</button>
 				<button
-					className="border-2 bg-gray-700 p-2 rounded-2xl w-20 text-white cursor-pointer"
+					className={`${styles.button} border-2 bg-gray-700 p-2 rounded-2xl w-20 text-white cursor-pointer`}
 					onClick={"#"}
 				>
 					Home
