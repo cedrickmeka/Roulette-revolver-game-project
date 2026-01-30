@@ -4,10 +4,8 @@
 */
 
 
-const getOpponent = (currentPlayer) => {
-  return currentPlayer === "PLAYER_1"
-    ? "PLAYER_2"
-    : "PLAYER_1";
-};
+function getOpponent(player) {
+  return player === "PLAYER_1" ? "PLAYER_2" : "PLAYER_1";
+}
 
 export { getOpponent };

@@ -1,14 +1,20 @@
 /*
- Contains probability logic for determining whether a trigger pull fires the bullet.
+spinChamber
+Returns a random bullet position in a 6-slot revolver
 */
 
+function spinChamber() {
+  return Math.floor(Math.random() * 6) + 1;
+}
 
-const spinChamber = (maxShots) => {
-  return Math.floor(Math.random() * maxShots);
-};
+/*
+isBulletFired
+Checks if the current shot fires the bullet
+*/
 
-const isBulletFired = (shotsTaken, bulletPosition) => {
-  return shotsTaken === bulletPosition;
-};
+function isBulletFired(shotNumber, bulletPosition) {
+  return shotNumber === bulletPosition;
+}
 
 export { spinChamber, isBulletFired };
+

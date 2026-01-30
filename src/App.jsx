@@ -1,9 +1,15 @@
+import { useGame } from "./context/GameContext";
+
+
 function App() {
+
+  const game = useGame();
+
   return (
     <div>
-      <h1 className="text-4xl font-bold">Roulette Revolver</h1>
+      <h1>App Features Coming Soon</h1>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
