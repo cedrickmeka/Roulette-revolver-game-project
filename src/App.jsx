@@ -6,6 +6,17 @@ import "./styles/global.css";
 
 function App() {
   const [page, setPage] = useState("titleScreen");
+  const [players, setPlayers] = useState([
+    { id: 1, name: 'Player  1', avatar: null },
+    { id: 2, name: 'Player 2', avatar: null}
+  ]);
+
+  // Update player avatar
+  const updatePlayerAvatar = (playerId, avatar) => {
+    setPlayers(prev => prev.map(player => 
+      player.id === playerId ? { ...player, avatar } : player
+    ));
+  };
   if (page === "titleScreen") {
     return <TitleScreen goNext={() => setPage("instructions")} />;
   }
@@ -14,8 +25,15 @@ function App() {
     return <InstructionsScreen goNext={() => setPage("avatar")} />;
   }
 
-  if (page === "avatar") {
-    return <AvatarSelect goNext={() => setPage("turn")} />;
+  
+  if (page === 'avatar') {
+    return (
+      <AvatarSelect 
+        players={players}
+        updatePlayerAvatar={updatePlayerAvatar}
+        goNext={() => setPage('')}
+      />
+    );
   }
 
   return null;

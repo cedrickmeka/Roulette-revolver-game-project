@@ -14,7 +14,7 @@ function TitleScreen({ goNext }) {
       title: "Second slide label",
       text: "Some representative placeholder content for the second slide.",
       image: "https://via.placeholder.com/1200x600",
-    },
+    }, 
     {
       title: "Third slide label",
       text: "Some representative placeholder content for the third slide.",
@@ -26,9 +26,9 @@ function TitleScreen({ goNext }) {
     <div className="min-h-screen flex items-center justify-center bg-black">
       {/* 80% centered wrapper */}
       <div className="w-full max-w-[80vw] max-h-[80vh]">
-        {/* Carousel container */}
+        {/*Carousel container */}
         <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-          {/* Slides */}
+        
           <div className="relative h-[60vh]">
             {slides.map((slide, index) => (
               <div
@@ -39,7 +39,7 @@ function TitleScreen({ goNext }) {
               >
                 <img
                   src={slide.image}
-                  alt={slide.title}
+                  alt={slide.title}// helps with screen reader
                   className="h-full w-full object-cover"
                 />
 
@@ -61,14 +61,14 @@ function TitleScreen({ goNext }) {
             }
             className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 text-white rounded-full p-3 hover:bg-black/80 transition"
           >
-            ‹
+            Previous
           </button>
 
           <button
             onClick={() => setCurrentSlide((currentSlide + 1) % slides.length)}
             className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 text-white rounded-full p-3 hover:bg-black/80 transition"
           >
-            ›
+            Next
           </button>
 
           {/* Indicators */}
