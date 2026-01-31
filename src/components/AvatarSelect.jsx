@@ -1,6 +1,7 @@
 import { useState } from "react";
 import avatar1 from "../Assets/avatar1.jpeg";
 import avatar2 from "../Assets/avatar2.jpeg";
+
 import backgroundImage from "../Assets/avatarselect.png";
 
 function AvatarSelect({ players, updatePlayerAvatar }) {
@@ -9,7 +10,8 @@ function AvatarSelect({ players, updatePlayerAvatar }) {
   const avatars = [
     { id: 1, image: avatar1 },
     { id: 2, image: avatar2 },
-  ]; 
+    
+  ]; //add tow avatars. ✅done
 
   const handleSelect = (playerId, avatar) => {
     setSelectedAvatars((prev) => ({ ...prev, [playerId]: avatar }));

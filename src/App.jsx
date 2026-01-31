@@ -3,6 +3,7 @@ import TitleScreen from "./components/TitleScreen";
 import InstructionsScreen from "./components/InstructionsScreen";
 import AvatarSelect from "./components/AvatarSelect";
 import "./styles/global.css";
+import TriviaPrompt from "./components/TriviaPrompt";
 
 function App() {
   const [page, setPage] = useState("titleScreen");
@@ -31,10 +32,20 @@ function App() {
       <AvatarSelect 
         players={players}
         updatePlayerAvatar={updatePlayerAvatar}
+        goNext={() => setPage('trivia')}
+      />
+    );
+  }
+if (page === 'trivia') {
+    return (
+      <TriviaPrompt
+        players={players}
         goNext={() => setPage('')}
       />
     );
   }
+
+
 
   return null;
 }
