@@ -1,0 +1,32 @@
+@import "tailwindcss";
+/* Reset + layout sanity */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+/* Typography baseline */
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background-color: #000;
+  color: #fff;
+}
+
+/* Images behave properly */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Buttons feel clickable */
+button {
+  cursor: pointer;
+}
