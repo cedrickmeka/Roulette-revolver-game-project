@@ -1,3 +1,4 @@
 body {
-    background-color: rgba(0, 0, 139, 0.7);
+    /* background-color: rgba(0, 0, 139, 0.7); */
+    background: url(../../public/DeathScreen.png);
 }

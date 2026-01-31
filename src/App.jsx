@@ -1,10 +1,10 @@
-//import DeathScreen from "./components/DeathScreen.jsx"
+import DeathScreen from "./components/DeathScreen.jsx"
 import WinnerScreen from "./components/WinnerScreen.jsx"
 
 function App() {
   return (
     <div>
-      <WinnerScreen></WinnerScreen>
+      <DeathScreen></DeathScreen>
     </div>
   )
 }
