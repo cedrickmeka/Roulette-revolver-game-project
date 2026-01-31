@@ -1,12 +1,12 @@
-import DeathScreen from "./components/DeathScreen.jsx"
-import WinnerScreen from "./components/WinnerScreen.jsx"
+import DeathScreen from "./components/DeathScreen.jsx";
+import WinnerScreen from "./components/WinnerScreen.jsx";
 
 function App() {
-  return (
-    <div>
-      <DeathScreen></DeathScreen>
-    </div>
-  )
+	return (
+		<div>
+      <WinnerScreen></WinnerScreen>
+		</div>
+	);
 }
 
-export default App
+export default App;
