@@ -4,7 +4,7 @@ import avatar2 from "../Assets/avatar2.jpeg";
 
 import backgroundImage from "../Assets/avatarselect.png";
 
-function AvatarSelect({ players, updatePlayerAvatar }) {
+function AvatarSelect({ players, updatePlayerAvatar}) {
   const [selectedAvatars, setSelectedAvatars] = useState({ 1: null, 2: null });
 
   const avatars = [
@@ -26,16 +26,16 @@ function AvatarSelect({ players, updatePlayerAvatar }) {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
+      
     >
       <div className="max-w-5xl mx-auto backdrop-blur-sm bg-black/60 rounded-2xl p-10">
         <h1 className="text-5xl font-extrabold text-center mb-3 text-red-500 tracking-wide">
-          SELECT YOUR AGENT
+          SELECT THE AVATAR
         </h1>
 
         <p className="text-center text-gray-400 mb-12">
           Both players must choose an avatar to continue
         </p>
-
         <div className="grid md:grid-cols-2 gap-10">
           {players.map((player) => (
             <div
@@ -71,6 +71,7 @@ function AvatarSelect({ players, updatePlayerAvatar }) {
                         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
                           SELECTED
                         </div>
+                        
                       )}
                     </button>
                   );

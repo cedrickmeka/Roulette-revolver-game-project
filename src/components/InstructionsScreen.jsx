@@ -37,7 +37,7 @@ export default function Instructions({ goNext }) {
         </div>
 
         <button className="accept-mission" onClick={goNext}>
-          ACCEPT MISSION
+          ACCEPT
         </button>
       </div>
     </div>
