@@ -1,28 +1,28 @@
 export const stages =[
   {
     id:1,
-    name:"The precision",
-    mechanic:"Timing",
-    objective:"Click the hammer when the gauge is in the green zone."
+    name:"Stage 1",
+    mechanic:"Initiation",
+    objective:"Survive the first trigger pull and prove you can keep your composure."
   },
 
   {
     id:2,
-    name:"The Calibration",
-    mechanic:"Memory",
-    objective:"Repeat a sequence of 5 Cylinder clicks(Simon says)"
+    name:"Stage 2",
+    mechanic:"Rising Tension",
+    objective:"Endure multiple trigger pulls as the odds worsen."
   },
   {
     id:3,
-    name:"The Disarm",
-    mechanic:"Logic",
-    objective:"Solve a simple math/logic puzzle under a 10 sec timer."
+    name:"Stage 3",
+    mechanic:"High Stakes",
+    objective:"Face near-fatal risk with every pull while maintaining focus."
   },
 
   {
     id:4,
-    name:"The Chamber",
-    mechanic:"Probability",
-    objective:"Pull the trigger."
+    name:"Stage 4",
+    mechanic:"Final Reckoning",
+    objective:"Survive the most dangerous round of the game."
   },
 ]
