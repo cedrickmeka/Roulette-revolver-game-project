@@ -1,6 +1,7 @@
 import { useState } from "react";
 import GameScreen from "./animations/GameScreen";
 import { PageTransition } from "./animations/transitions";
+import { useGame } from "./context/GameContext";
 
 const GAME_STATE = {
   START: "START",
@@ -10,6 +11,8 @@ const GAME_STATE = {
 
 function App() {
   const [gameState, setGameState] = useState(GAME_STATE.START);
+  
+  const game = useGame();
 
   const startGame = () => setGameState(GAME_STATE.PLAYING);
   const endGame = () => setGameState(GAME_STATE.GAME_OVER);
