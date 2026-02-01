@@ -36,11 +36,12 @@ function App() {
       />
     );
   }
+
 if (page === 'trivia') {
     return (
       <TriviaPrompt
         players={players}
-        goNext={() => setPage('')}
+        goNext={() => setPage('')}//the person assigned to stage1 should continue from here
       />
     );
   }
