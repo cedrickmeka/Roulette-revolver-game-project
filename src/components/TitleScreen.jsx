@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import onboardingImage from "../Assets/Onboarding.jpeg";
+import slide2 from "../Assets/slide2.jpeg"
+import slide3 from"../Assets/slide3.png"
 
 function TitleScreen({ goNext }) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -11,14 +13,15 @@ function TitleScreen({ goNext }) {
       image: onboardingImage,
     },
     {
-      title: "Second slide label",
-      text: "Some representative placeholder content for the second slide.",
-      image: "https://via.placeholder.com/1200x600",
+      title: "How to play the game",
+      text:"The game is made up 4 stages, Each stage is made up of a unique challenge.",
+      image: slide2,
     }, 
+    //customize slides 2 & 3
     {
-      title: "Third slide label",
-      text: "Some representative placeholder content for the third slide.",
-      image: "https://via.placeholder.com/1200x600",
+      title: "Your goal",
+      text: "Complete each stage and the bonus round to became the winner.",
+      image: slide3,
     },
   ];
 
@@ -56,7 +59,7 @@ function TitleScreen({ goNext }) {
           <button
             onClick={() =>
               setCurrentSlide(
-                (currentSlide - 1 + slides.length) % slides.length,
+                (currentSlide - 1 + slides.length) % slides.length,//this is when u click previous
               )
             }
             className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 text-white rounded-full p-3 hover:bg-black/80 transition"
@@ -65,7 +68,7 @@ function TitleScreen({ goNext }) {
           </button>
 
           <button
-            onClick={() => setCurrentSlide((currentSlide + 1) % slides.length)}
+            onClick={() => setCurrentSlide((currentSlide + 1) % slides.length)}//when you click next
             className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 text-white rounded-full p-3 hover:bg-black/80 transition"
           >
             Next
@@ -76,7 +79,7 @@ function TitleScreen({ goNext }) {
             {slides.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentSlide(index)}
+                onClick={() => setCurrentSlide(index)}//this jumps directly to the chosen slid
                 className={`h-2 w-2 rounded-full transition ${
                   index === currentSlide ? "bg-white" : "bg-white/40"
                 }`}

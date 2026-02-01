@@ -1,4 +1,9 @@
 import { useState } from "react";
+import TitleScreen from "./components/TitleScreen";
+import InstructionsScreen from "./components/InstructionsScreen";
+import AvatarSelect from "./components/AvatarSelect";
+import "./styles/global.css";
+import TriviaPrompt from "./components/TriviaPrompt";
 import GameScreen from "./animations/GameScreen";
 import { PageTransition } from "./animations/transitions";
 import { useGame } from "./context/GameContext";
@@ -12,6 +17,28 @@ const GAME_STATE = {
 function App() {
   const [gameState, setGameState] = useState(GAME_STATE.START);
   
+  if (page === 'avatar') {
+    return (
+      <AvatarSelect 
+        players={players}
+        updatePlayerAvatar={updatePlayerAvatar}
+        goNext={() => setPage('trivia')}
+      />
+    );
+  }
+
+if (page === 'trivia') {
+    return (
+      <TriviaPrompt
+        players={players}
+        goNext={() => setPage('')}//the person assigned to stage1 should continue from here
+      />
+    );
+  }
+
+
+
+  return null;
   const game = useGame();
 
   const startGame = () => setGameState(GAME_STATE.PLAYING);
