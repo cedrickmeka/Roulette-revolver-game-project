@@ -61,7 +61,7 @@ function GameProvider({ children }) {
       return;
     }
 
-    // Player keeps shooting until they exhaust shots
+    // make sure player keeps shooting until they exhaust shots
     if (nextShot < maxShots) return;
 
     // Turn ends only after shots exhausted
