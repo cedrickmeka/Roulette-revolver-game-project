@@ -11,7 +11,7 @@ function AvatarSelect({ players, updatePlayerAvatar}) {
     { id: 1, image: avatar1 },
     { id: 2, image: avatar2 },
     
-  ]; //add tow avatars. ✅done
+  ]; 
 
   const handleSelect = (playerId, avatar) => {
     setSelectedAvatars((prev) => ({ ...prev, [playerId]: avatar }));

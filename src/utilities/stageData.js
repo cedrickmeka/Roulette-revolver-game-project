@@ -10,7 +10,7 @@ export const stages =[
     id:2,
     name:"Stage 2",
     mechanic:"Rising Tension",
-    objective:"Endure multiple trigger pulls as the odds worsen. "
+    objective:"Endure multiple trigger pulls as the odds worsen."
   },
   {
     id:3,
@@ -26,20 +26,3 @@ export const stages =[
     objective:"Survive the most dangerous round of the game."
   },
 ]
-/*
-Stage 1 – Initiation
-
-Survive the first trigger pull and prove you can keep your composure. Answer correctly to earn the right to continue.
-
-Stage 2 – Rising Tension
-
-Endure multiple trigger pulls as the odds worsen. Stay sharp under pressure and pass the trivia to advance.
-
-Stage 3 – High Stakes
-
-Face near-fatal risk with every pull while maintaining focus. Only calm nerves and correct answers will carry you forward.
-
-Stage 4 – Final Reckoning
-
-Survive the most dangerous round of the game. Outthink your opponent in trivia to claim victory.
-*/
