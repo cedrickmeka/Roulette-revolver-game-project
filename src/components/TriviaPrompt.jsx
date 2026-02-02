@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
+import { useGame } from "../context/GameContext";
 import triviaQuestions from "../utilities/triviaData";
 import triviaimage from "../Assets/trivia.png";
 
-function TriviaPrompt({ players, onComplete }) {
-  const [question] = useState(() => {
+function TriviaPrompt() {
+  const { currentPlayer, resolveTrivia } = useGame();
+  
+  // Start with a random question
+  const [question, setQuestion] = useState(() => {
     const randomIndex = Math.floor(Math.random() * triviaQuestions.length);
     return triviaQuestions[randomIndex];
   });
@@ -11,21 +15,29 @@ function TriviaPrompt({ players, onComplete }) {
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [timeLeft, setTimeLeft] = useState(30);
 
+  // Get new random question when player changes (so each player gets different question)
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * triviaQuestions.length);
+    setQuestion(triviaQuestions[randomIndex]);
+    setSelectedAnswer(null);
+    setTimeLeft(30);
+  }, [currentPlayer]);
+
   useEffect(() => {
     if (timeLeft > 0) {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
       return () => clearTimeout(timer);
     } else {
-      onComplete(false);
+      resolveTrivia(false);
     }
-  }, [timeLeft, onComplete]);
+  }, [timeLeft, resolveTrivia]);
 
   const handleAnswer = (answer) => {
     setSelectedAnswer(answer);
     const isCorrect = answer === question.correctAnswer;
 
     setTimeout(() => {
-      onComplete(isCorrect);
+      resolveTrivia(isCorrect);
     }, 1000);
   };
 
@@ -48,7 +60,7 @@ function TriviaPrompt({ players, onComplete }) {
 
           <div className="mb-8">
             <h2 className="text-2xl text-green-400 mb-4">
-              {players.name}'s Turn
+              {currentPlayer === "PLAYER_1" ? "Player 1" : "Player 2"}'s Turn
             </h2>
             <p className="text-xl">{question.text}</p>
           </div>
@@ -98,4 +110,4 @@ function TriviaPrompt({ players, onComplete }) {
   );
 }
 
-export default TriviaPrompt; // ✅ MUST HAVE THIS LINE
+export default TriviaPrompt;

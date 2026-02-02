@@ -1,21 +1,23 @@
 import { useState } from "react";
+import { useGame } from "../context/GameContext";
 import avatar1 from "../Assets/avatar1.jpeg";
 import avatar2 from "../Assets/avatar2.jpeg";
+import backgroundImage from "../Assets/avatarselect.png";
 
-import backgroundImage from "../Assets/avatarSelect.png";
-
-function AvatarSelect({ players, updatePlayerAvatar, goNext }) {
+function AvatarSelect() {
+  const { startShooting } = useGame();
   const [selectedAvatars, setSelectedAvatars] = useState({ 1: null, 2: null });
 
   const avatars = [
-    { id: 1, image: avatar1 },
-    { id: 2, image: avatar2 },
+    { id: 1, image: avatar1, name: "Fighter" },
+    { id: 2, image: avatar2, name: "Warrior" },
   ];
 
   const handleSelect = (playerId, avatar) => {
     setSelectedAvatars((prev) => ({ ...prev, [playerId]: avatar }));
-    updatePlayerAvatar(playerId, avatar);
   };
+
+  const canContinue = selectedAvatars[1] && selectedAvatars[2];
 
   return (
     <div
@@ -35,39 +37,38 @@ function AvatarSelect({ players, updatePlayerAvatar, goNext }) {
           Both players must choose an avatar to continue
         </p>
         <div className="grid md:grid-cols-2 gap-10">
-          {players.map((player) => (
+          {[1, 2].map((playerId) => (
             <div
-              key={player.id}
+              key={playerId}
               className="rounded-xl bg-gray-900/70 border border-gray-700 p-8 shadow-lg"
             >
               <h2 className="text-2xl font-bold mb-6 text-center">
-                Player {player.id}
-                <span className="block text-gray-400 text-base">
-                  {player.name}
-                </span>
+                Player {playerId}
               </h2>
 
               <div className="grid grid-cols-2 gap-6">
                 {avatars.map((avatar) => {
                   const isSelected =
-                    selectedAvatars[player.id]?.id === avatar.id;
+                    selectedAvatars[playerId]?.id === avatar.id;
 
                   return (
                     <button
                       key={avatar.id}
-                      onClick={() => handleSelect(player.id, avatar)}
-                      className={`relative rounded-xl overflow-hidden border transition-all duration-300
-                        `}
+                      onClick={() => handleSelect(playerId, avatar)}
+                      className={`relative rounded-xl overflow-hidden border-2 transition-all duration-300 ${
+                        isSelected ? "border-green-500" : "border-gray-600 hover:border-red-500"
+                      }`}
                     >
                       <img
                         src={avatar.image}
-                        alt="Avatar"
+                        alt={avatar.name}
                         className="w-full h-40 object-cover"
                       />
+                      <div className="p-2 text-center font-bold">{avatar.name}</div>
 
                       {isSelected && (
-                        <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                          SELECTED
+                        <div className="absolute inset-0 bg-green-500/20 flex items-center justify-center">
+                          <span className="bg-green-500 text-black px-3 py-1 rounded font-bold">SELECTED</span>
                         </div>
                       )}
                     </button>
@@ -77,19 +78,18 @@ function AvatarSelect({ players, updatePlayerAvatar, goNext }) {
             </div>
           ))}
         </div>
-
-        <div className="mt-10 text-center">
-          <button
-            onClick={goNext}
-            disabled={!selectedAvatars[1] || !selectedAvatars[2]}
-            className={`px-10 py-4 rounded-lg text-xl font-bold transition-all
-              ${
-                selectedAvatars[1] && selectedAvatars[2]
-                  ? "bg-red-600 hover:bg-red-700 text-white shadow-lg hover:shadow-red-600/50 hover:scale-105"
-                  : "bg-gray-700 text-gray-500 cursor-not-allowed"
-              }`}
+        
+        <div className="text-center mt-8">
+          <button 
+            onClick={startShooting}
+            disabled={!canContinue}
+            className={`px-10 py-4 text-xl font-bold rounded-lg transition ${
+              canContinue 
+                ? "bg-green-600 hover:bg-green-700 text-white" 
+                : "bg-gray-600 text-gray-400 cursor-not-allowed"
+            }`}
           >
-            Continue to Trivia
+            {canContinue ? "Start Game" : "Both Players Must Select Avatar"}
           </button>
         </div>
       </div>
