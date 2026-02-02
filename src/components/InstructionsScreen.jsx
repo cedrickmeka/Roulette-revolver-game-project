@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../styles/Instructions.css"
+import "../styles/Instructions.css";
 import { stages } from "../utilities/stageData";
 
 export default function Instructions({ goNext }) {
@@ -18,9 +18,7 @@ export default function Instructions({ goNext }) {
           {stages.map((stage, index) => (
             <button
               key={stage.id}
-              className={`stage-card ${
-                index === activeStage ? "active" : ""
-              }`}
+              className={`stage-card ${index === activeStage ? "active" : ""}`}
               onClick={() => setActiveStage(index)}
             >
               <span className="stage-number">
@@ -30,17 +28,15 @@ export default function Instructions({ goNext }) {
                 <div className="stage-title">{stage.name}</div>
                 <div className="stage-sub">hint:{stage.mechanic}</div>
                 <div className="stage-obj">objectives:{stage.objective}</div>
-
               </div>
             </button>
           ))}
         </div>
 
         <button className="accept-mission" onClick={goNext}>
-          ACCEPT MISSION
+          ACCEPT
         </button>
       </div>
     </div>
   );
 }
- 
