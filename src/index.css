@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Paste this at the bottom of index.css */
 @layer utilities {
   @keyframes shake {
     0%,
