@@ -3,7 +3,6 @@ Central state machine for Tactical Roulette.
 Handles game phases, player switching, stage progression, shooting logic, trivia resolution and win/lose conditions.
 */
 
-
 import { createContext, useContext, useState } from "react";
 import stageConfig from "../utilities/stageConfig";
 import { spinChamber, isBulletFired } from "../utilities/rouletteLogic";
@@ -12,7 +11,7 @@ import { getOpponent } from "../utilities/playerHelper";
 const GameContext = createContext();
 
 function GameProvider({ children }) {
-  // state
+  // Game state
   const [gamePhase, setGamePhase] = useState("TITLE");
   const [stage, setStage] = useState(null);
   const [currentPlayer, setCurrentPlayer] = useState("PLAYER_1");
@@ -23,24 +22,29 @@ function GameProvider({ children }) {
   const [bulletPosition, setBulletPosition] = useState(null);
   const [triviaAnswers, setTriviaAnswers] = useState(0);
 
-  // switch player
+  // Switch player
   function switchPlayer() {
     setCurrentPlayer((prev) => getOpponent(prev));
     setShotsTaken(0);
     setBulletPosition(spinChamber());
   }
 
-  // start stage
+  // Start game
   function startStage() {
     if (gamePhase !== "TITLE") return;
 
+    setGamePhase("AVATAR_SELECT");
+  }
+
+  // Go to shooting after avatar selection
+  function startShooting() {
     setStage(1);
     setShotsTaken(0);
     setBulletPosition(spinChamber());
     setGamePhase("TURN");
   }
 
-  // shooting logic
+  // Shooting logic
   function shoot() {
     if (gamePhase !== "TURN" || deadPlayer) return;
 
@@ -61,10 +65,10 @@ function GameProvider({ children }) {
       return;
     }
 
-    // make sure player keeps shooting until they exhaust shots
+    // Keep shooting until all shots used
     if (nextShot < maxShots) return;
 
-    // Turn ends only after shots exhausted
+    // Turn ends
     if (currentPlayer === "PLAYER_1") {
       switchPlayer();
     } else {
@@ -74,7 +78,7 @@ function GameProvider({ children }) {
     }
   }
 
-  // resolve trivia
+  // Resolve trivia
   function resolveTrivia(isCorrect) {
     if (gamePhase !== "TRIVIA" || deadPlayer) return;
 
@@ -98,9 +102,9 @@ function GameProvider({ children }) {
       setWinner("BOTH_SURVIVED");
       setGamePhase("WIN");
       return;
-      }
-      
-    // stage transition
+    }
+
+    // Next stage
     setStage(stage + 1);
     setCurrentPlayer("PLAYER_1");
     setShotsTaken(0);
@@ -108,7 +112,7 @@ function GameProvider({ children }) {
     setGamePhase("TURN");
   }
 
-  // restart game
+  // Reset game
   function resetGame() {
     setGamePhase("TITLE");
     setStage(null);
@@ -133,9 +137,10 @@ function GameProvider({ children }) {
         shoot,
         resolveTrivia,
         startStage,
+        startShooting,
         resetGame,
       }}
-    >    
+    >
       {children}
     </GameContext.Provider>
   );
@@ -147,4 +152,3 @@ function useGame() {
 
 export default GameProvider;
 export { useGame };
-
