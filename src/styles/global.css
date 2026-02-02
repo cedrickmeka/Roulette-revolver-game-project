@@ -1,6 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 /* Reset + layout sanity */
 *,
 *::before,
@@ -17,9 +14,14 @@ body,
 
 /* Typography baseline */
 body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  background-color: #000;
-  color: #fff;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  background-color: #e9dddd;
+  color: #292323;
 }
 
 /* Images behave properly */
