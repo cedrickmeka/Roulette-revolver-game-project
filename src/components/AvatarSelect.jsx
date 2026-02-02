@@ -2,7 +2,7 @@ import { useState } from "react";
 import avatar1 from "../Assets/avatar1.jpeg";
 import avatar2 from "../Assets/avatar2.jpeg";
 
-import backgroundImage from "../Assets/avatarselect.png";
+import backgroundImage from "../Assets/avatarSelect.png";
 
 function AvatarSelect({ players, updatePlayerAvatar, goNext }) {
   const [selectedAvatars, setSelectedAvatars] = useState({ 1: null, 2: null });
