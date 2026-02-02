@@ -1,10 +1,7 @@
-@import "tailwindcss";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Paste this at the bottom of index.css */
 @layer utilities {
   @keyframes shake {
     0%,
@@ -37,4 +34,3 @@
     animation: flashRed 0.2s ease-in-out;
   }
 }
-

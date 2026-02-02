@@ -4,14 +4,13 @@ import avatar2 from "../Assets/avatar2.jpeg";
 
 import backgroundImage from "../Assets/avatarselect.png";
 
-function AvatarSelect({ players, updatePlayerAvatar}) {
+function AvatarSelect({ players, updatePlayerAvatar, goNext }) {
   const [selectedAvatars, setSelectedAvatars] = useState({ 1: null, 2: null });
 
   const avatars = [
     { id: 1, image: avatar1 },
     { id: 2, image: avatar2 },
-    
-  ]; 
+  ];
 
   const handleSelect = (playerId, avatar) => {
     setSelectedAvatars((prev) => ({ ...prev, [playerId]: avatar }));
@@ -26,7 +25,6 @@ function AvatarSelect({ players, updatePlayerAvatar}) {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-      
     >
       <div className="max-w-5xl mx-auto backdrop-blur-sm bg-black/60 rounded-2xl p-10">
         <h1 className="text-5xl font-extrabold text-center mb-3 text-red-500 tracking-wide">
@@ -71,7 +69,6 @@ function AvatarSelect({ players, updatePlayerAvatar}) {
                         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
                           SELECTED
                         </div>
-                        
                       )}
                     </button>
                   );
@@ -79,6 +76,21 @@ function AvatarSelect({ players, updatePlayerAvatar}) {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-10 text-center">
+          <button
+            onClick={goNext}
+            disabled={!selectedAvatars[1] || !selectedAvatars[2]}
+            className={`px-10 py-4 rounded-lg text-xl font-bold transition-all
+              ${
+                selectedAvatars[1] && selectedAvatars[2]
+                  ? "bg-red-600 hover:bg-red-700 text-white shadow-lg hover:shadow-red-600/50 hover:scale-105"
+                  : "bg-gray-700 text-gray-500 cursor-not-allowed"
+              }`}
+          >
+            Continue to Trivia
+          </button>
         </div>
       </div>
     </div>

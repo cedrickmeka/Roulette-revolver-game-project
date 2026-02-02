@@ -10,40 +10,57 @@ import { useGame } from "./context/GameContext";
 
 const GAME_STATE = {
   START: "START",
+  AVATAR: "AVATAR",
+  TRIVIA: "TRIVIA",
   PLAYING: "PLAYING",
   GAME_OVER: "GAME_OVER",
 };
 
 function App() {
   const [gameState, setGameState] = useState(GAME_STATE.START);
-  
-  if (page === 'avatar') {
+  const [players, setPlayers] = useState([
+    { id: 1, name: "Player 1", avatar: null },
+    { id: 2, name: "Player 2", avatar: null }
+  ]);
+  const game = useGame();
+
+  const updatePlayerAvatar = (playerId, avatar) => {
+    setPlayers(prev => 
+      prev.map(player => 
+        player.id === playerId ? { ...player, avatar } : player
+      )
+    );
+  };
+
+  // Screen flow
+  if (gameState === GAME_STATE.AVATAR) {
     return (
       <AvatarSelect 
         players={players}
         updatePlayerAvatar={updatePlayerAvatar}
-        goNext={() => setPage('trivia')}
+        goNext={() => setGameState(GAME_STATE.TRIVIA)}
       />
     );
   }
 
-if (page === 'trivia') {
+  if (gameState === GAME_STATE.TRIVIA) {
     return (
       <TriviaPrompt
         players={players}
-        goNext={() => setPage('')}//the person assigned to stage1 should continue from here
+        onComplete={() => setGameState(GAME_STATE.PLAYING)}
       />
     );
   }
 
-
-
-  return null;
-  const game = useGame();
-
-  const startGame = () => setGameState(GAME_STATE.PLAYING);
+  const startGame = () => setGameState(GAME_STATE.AVATAR);
   const endGame = () => setGameState(GAME_STATE.GAME_OVER);
-  const resetGame = () => setGameState(GAME_STATE.START);
+  const resetGame = () => {
+    setGameState(GAME_STATE.START);
+    setPlayers([
+      { id: 1, name: "Player 1", avatar: null },
+      { id: 2, name: "Player 2", avatar: null }
+    ]);
+  };
 
   return (
     <div className="w-full h-screen bg-black overflow-hidden relative text-white font-sans">
