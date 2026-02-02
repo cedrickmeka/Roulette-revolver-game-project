@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import triviaQuestions from "../utilities/triviaData";
-import triviaimage from "../Assets/trivia.png";
+import { useState, useEffect } from 'react';
+import triviaQuestions from '../utilities/triviaData';
+import triviaimage from '../Assets/trivia.png';
 
 function TriviaPrompt({ players, onComplete }) {
   const [question] = useState(() => {
@@ -29,18 +29,18 @@ function TriviaPrompt({ players, onComplete }) {
     }, 1000);
   };
 
-  const optionLetters = ["A", "B", "C", "D"];
+  const optionLetters = ['A', 'B', 'C', 'D'];
 
   return (
     <div
-      className="min-h-screen  text-white p-8"
+      className="min-h-screen text-white p-8"
       style={{
         backgroundImage: `url(${triviaimage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
     >
-        <div className="w-200 h-70 mx-auto">
+      <div className="w-[50rem] h-[17.5rem] mx-auto">
         <div className="border-2 border-red-500 rounded-lg p-8">
           <h1 className="text-4xl font-bold text-red-500 text-center mb-6">
             TRIVIA ALERT
@@ -53,14 +53,14 @@ function TriviaPrompt({ players, onComplete }) {
             <p className="text-xl">{question.text}</p>
           </div>
 
-          <div className="text-center mb-8"> 
+          <div className="text-center mb-8">
             <div
               className={`text-5xl font-mono font-bold mb-2 ${
-                timeLeft < 10 ? "text-red-500" : "text-green-500"
+                timeLeft < 10 ? 'text-red-500' : 'text-green-500'
               }`}
             >
-              {String(Math.floor(timeLeft / 60)).padStart(2, "0")}:
-              {String(timeLeft % 60).padStart(2, "0")}
+              {String(Math.floor(timeLeft / 60)).padStart(2, '0')}:
+              {String(timeLeft % 60).padStart(2, '0')}
             </div>
             <div className="text-gray-400">TIME REMAINING</div>
           </div>
@@ -78,9 +78,9 @@ function TriviaPrompt({ players, onComplete }) {
                   className={`w-full text-left p-4 rounded-lg border-2 transition-all text-lg ${
                     isSelected
                       ? isCorrect
-                        ? "bg-green-900 border-green-500 text-green-300"
-                        : "bg-red-900 border-red-500 text-red-300"
-                      : "bg-gray-900 border-gray-700 hover:border-red-500"
+                        ? 'bg-green-900 border-green-500 text-green-300'
+                        : 'bg-red-900 border-red-500 text-red-300'
+                      : 'bg-gray-900 border-gray-700 hover:border-red-500'
                   }`}
                 >
                   <strong className="mr-4">({letter})</strong> {option}
