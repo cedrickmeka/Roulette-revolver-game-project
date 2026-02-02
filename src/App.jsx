@@ -4,7 +4,7 @@ import InstructionsScreen from "./components/InstructionsScreen";
 import AvatarSelect from "./components/AvatarSelect";
 import "./styles/global.css";
 import TriviaPrompt from "./components/TriviaPrompt";
-import GameScreen from "./animations/GameScreen";
+import { GameScreen } from "./animations/GameScreen";
 import { PageTransition } from "./animations/transitions";
 import { useGame } from "./context/GameContext";
 
@@ -20,22 +20,22 @@ function App() {
   const [gameState, setGameState] = useState(GAME_STATE.START);
   const [players, setPlayers] = useState([
     { id: 1, name: "Player 1", avatar: null },
-    { id: 2, name: "Player 2", avatar: null }
+    { id: 2, name: "Player 2", avatar: null },
   ]);
   const game = useGame();
 
   const updatePlayerAvatar = (playerId, avatar) => {
-    setPlayers(prev => 
-      prev.map(player => 
-        player.id === playerId ? { ...player, avatar } : player
-      )
+    setPlayers((prev) =>
+      prev.map((player) =>
+        player.id === playerId ? { ...player, avatar } : player,
+      ),
     );
   };
 
   // Screen flow
   if (gameState === GAME_STATE.AVATAR) {
     return (
-      <AvatarSelect 
+      <AvatarSelect
         players={players}
         updatePlayerAvatar={updatePlayerAvatar}
         goNext={() => setGameState(GAME_STATE.TRIVIA)}
@@ -58,7 +58,7 @@ function App() {
     setGameState(GAME_STATE.START);
     setPlayers([
       { id: 1, name: "Player 1", avatar: null },
-      { id: 2, name: "Player 2", avatar: null }
+      { id: 2, name: "Player 2", avatar: null },
     ]);
   };
 
