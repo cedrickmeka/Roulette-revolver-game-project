@@ -9,7 +9,7 @@ import { useEffect } from "react";
  */
 function GamePlayScreen() {
 	useEffect(() => {
-		document.body.style.backgroundImage = "url('public/gamePlayScreen.png')";
+		document.body.style.backgroundImage = "url('/gamePlayScreen.png')";
 		document.body.style.backgroundRepeat = "no-repeat";
         document.body.style.backgroundSize = "cover"
 
@@ -20,8 +20,6 @@ function GamePlayScreen() {
 
 	return (
 		<div className="text-white">
-			<h1>GamePlay Screen Coming Soon</h1>
-			<p>A text in the GamePlayScreen component.</p>
 		</div>
 	);
 }
