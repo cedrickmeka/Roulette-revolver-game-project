@@ -1,13 +1,10 @@
-import { useGame } from "./context/GameContext";
-
+import GameManager from "./components/GameManager";
+import "./styles/global.css";
 
 function App() {
-
-  const game = useGame();
-
   return (
-    <div>
-      <h1>App Features Coming Soon</h1>
+    <div className="w-full h-screen bg-black overflow-hidden relative text-white font-sans">
+      <GameManager />
     </div>
   );
 }
