@@ -1,53 +1,12 @@
-import { useState } from "react";
-import TitleScreen from "./components/TitleScreen";
-import InstructionsScreen from "./components/InstructionsScreen";
-import AvatarSelect from "./components/AvatarSelect";
+import GameManager from "./components/GameManager";
 import "./styles/global.css";
-import TriviaPrompt from "./components/TriviaPrompt";
 
 function App() {
-  const [page, setPage] = useState("titleScreen");
-  const [players, setPlayers] = useState([
-    { id: 1, name: 'Player  1', avatar: null },
-    { id: 2, name: 'Player 2', avatar: null}
-  ]);
-
-  
-  const updatePlayerAvatar = (playerId, avatar) => {
-    setPlayers(prev => prev.map(player => 
-      player.id === playerId ? { ...player, avatar } : player
-    ));
-  };
-  if (page === "titleScreen") {
-    return <TitleScreen goNext={() => setPage("instructions")} />;
-  }
-
-  if (page === "instructions") {
-    return <InstructionsScreen goNext={() => setPage("avatar")} />;
-  }
-
-  
-  if (page === 'avatar') {
-    return (
-      <AvatarSelect 
-        players={players}
-        updatePlayerAvatar={updatePlayerAvatar}
-        goNext={() => setPage('trivia')}
-      />
-    );
-  }
-if (page === 'trivia') {
-    return (
-      <TriviaPrompt
-        players={players}
-        goNext={() => setPage('')}
-      />
-    );
-  }
-
-
-
-  return null;
+  return (
+    <div className="w-full h-screen bg-black overflow-hidden relative text-white font-sans">
+      <GameManager />
+    </div>
+  );
 }
 
 export default App;

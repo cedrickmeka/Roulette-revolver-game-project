@@ -1,36 +1,34 @@
-/**
- * WinnerScreen.jsx
- * ----------------
- * Final screen displaying the winning player
- * after the game ends.
- */
-import { useEffect } from "react";
-import styles from "../styles/Styles.module.css";
+import { useGame } from "../context/GameContext";
 
 function WinnerScreen() {
-	useEffect(() => {
-		document.body.style.backgroundColor = "darkBlue";
-
-		return () => {
-			document.body.style.backgroundColor = "white";
-		};
-	}, []);
+	const { winner, resetGame } = useGame();
 
 	return (
-		<div className="text-center border-2 rounded-3xl bg-white w-200 m-auto mt-30 p-20 shadow-2xl shadow-gray-950">
-			<h1 className="text-6xl font-bold mb-7 mt-0 text-gray-700">
-				🎉Game Over!🎊
-			</h1>
+		<div className="min-h-screen bg-blue-900 text-white flex items-center justify-center">
+			<div className="text-center">
+				<h1 className="text-6xl font-bold mb-4 text-yellow-400">
+					🎉Game Over!🎊
+				</h1>
 
-			<hr />
+				<hr />
 
-			<p className="font-bold mt-5 text-4xl text-gray-700">Winner: Player 1</p>
+				{winner === "BOTH_SURVIVED" ? (
+					<p className="font-bold mt-5 text-4xl text-green-400">
+						Both Players Survived!
+					</p>
+				) : (
+					<p className="font-bold mt-5 text-4xl text-green-400">
+						Winner: {winner === "PLAYER_1" ? "Player 1" : "Player 2"}
+					</p>
+				)}
 
-			<button
-				className={`${styles.winnerButton} border-2 rounded-2xl mt-9 mb-0 p-5 w-120 text-5xl font-bold bg-green-600/90 text-white cursor-pointer shadow-2xl shadow-gray-900/50`}
-			>
-				Play Again
-			</button>
+				<button
+					onClick={resetGame}
+					className="border-2 rounded-2xl mt-9 p-5 text-3xl font-bold bg-green-600 text-white cursor-pointer"
+				>
+					Play Again
+				</button>
+			</div>
 		</div>
 	);
 }

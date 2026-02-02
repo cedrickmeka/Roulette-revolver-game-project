@@ -27,7 +27,6 @@ function AvatarSelect() {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-      
     >
       <div className="max-w-5xl mx-auto backdrop-blur-sm bg-black/60 rounded-2xl p-10">
         <h1 className="text-5xl font-extrabold text-center mb-3 text-red-500 tracking-wide">

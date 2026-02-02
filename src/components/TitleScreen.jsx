@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import { useGame } from "../context/GameContext";
 import onboardingImage from "../Assets/Onboarding.jpeg";
-import slide2 from "../Assets/slide2.jpeg"
-import slide3 from"../Assets/slide3.png"
+import slide2 from "../Assets/slide2.jpeg";
+import slide3 from "../Assets/slide3.png";
 
 function TitleScreen() {
   const { startStage } = useGame();
@@ -17,7 +17,7 @@ function TitleScreen() {
     },
     {
       title: "How to play the game",
-      text:"The game is made up 4 stages, Each stage is made up of a unique challenge.",
+      text: "The game is made up 4 stages, Each stage is made up of a unique challenge.",
       image: slide2,
     }, 
     {
