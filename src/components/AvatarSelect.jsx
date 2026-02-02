@@ -21,7 +21,7 @@ function AvatarSelect() {
 
   return (
     <div
-      className="min-h-screen text-white p-8 bg-linear-to-b from-black via-gray-900 to-black"
+      className="min-h-screen text-white p-8 bg-gradient-to-b from-black via-gray-900 to-black"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
