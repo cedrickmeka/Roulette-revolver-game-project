@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
+// useEffect has been implemented here because it runs after the component has been rendered and can be controlled to run only when specific values change
 export const useTensionEffects = (value, type = "shake", threshold = 30) => {
   const [effectClass, setEffectClass] = useState("");
   const timeoutRef = useRef(null);
@@ -26,6 +27,7 @@ export const useTensionEffects = (value, type = "shake", threshold = 30) => {
 
     setEffectClass("");
 
+    // the setEffect Here is used for adding visuals audio's and the effects for the animation
     requestAnimationFrame(() => {
       setEffectClass(selectedEffect.className);
 
